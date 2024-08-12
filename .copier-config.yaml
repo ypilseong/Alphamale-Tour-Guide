@@ -1,0 +1,35 @@
+# Changes here will be overwritten by Copier; do NOT edit manually
+_commit: v0.14.4
+_src_path: gh:entelecheia/hyperfast-python-template
+author: Pilseong Yang
+build_and_release: true
+code_template_answers_file: .copier-hyfi-config.yaml
+code_template_source: ''
+codecov_graph_token: '[REPLACE_ME]'
+copyright_year: 2024
+documentaion_tool: jupyter-book
+documentation_url: https://ypilseong.github.io/Alphamale-Tour-Guide
+email: lal4995@gmail.com
+favicon_path: ''
+friendly_name: alphamale-tour-guide
+github_repo_name: Alphamale-Tour-Guide
+github_username: ypilseong
+google_analytics_id: ''
+logo_path: ''
+main_branch: main
+open_link: false
+package_name: alphamale_tour_guide
+package_scripts:
+- alphamale_tour_guide = 'alphamale_tour_guide.__cli__:main'
+poe_task_files:
+- .tasks.toml
+- .tasks-extra.toml
+project_description: tour guide using LLM for hackathon
+project_license: MIT
+project_name: alphamale-tour-guide
+project_short_description: tour guide using LLM for hackathon
+upload_to_release: true
+upload_to_repository: true
+use_launch_buttons: false
+use_source_code_skeleton: true
+

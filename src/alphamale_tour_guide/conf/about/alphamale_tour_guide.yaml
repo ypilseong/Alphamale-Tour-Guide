@@ -1,0 +1,6 @@
+_open_link_: False
+name: "alphamale-tour-guide"
+authors: "Pilseong Yang <lal4995@gmail.com>"
+description: "tour guide using LLM for hackathon"
+homepage: "https://ypilseong.github.io/Alphamale-Tour-Guide"
+license: "MIT"
