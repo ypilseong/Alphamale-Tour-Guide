@@ -10,7 +10,7 @@ from chat_solar.rag import UpstageRAGChatbot  # 귀하의 코드가 있는 모�
 api_key = os.getenv("UPSTAGE_API_KEY")
 naver_client_id = os.getenv("NAVER_CLIENT_ID")
 naver_client_secret = os.getenv("NAVER_CLIENT_SECRET")
-file_path = "data/output.csv"
+file_path = "data/output_with_area2.csv"
 
 chatbot = UpstageRAGChatbot(api_key, file_path)
 

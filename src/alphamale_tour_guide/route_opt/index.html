@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naver Map with KML</title>
+    <!-- 네이버 지도 API -->
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=8be5cciauz"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="map" style="width: 100%; height: 500px;"></div>
+    <script>
+        // 지도 생성
+        var map = new naver.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            mapTypeId: 'normal',
+            center: new naver.maps.LatLng(33.247611138, 126.564001857)  // 제주도 좌표
+        });
+
+        var HOME_PATH = window.HOME_PATH || '.'; // 현재 경로 또는 지정 경로 사용
+
+        // KML 파일을 로드하여 지도에 표시
+        naver.maps.Event.once(map, 'init', function () {
+            $.ajax({
+                url: 'jeju_routes.kml',  // KML 파일 경로
+                dataType: 'xml',  // KML 파일은 XML 형식으로 가져옴
+                success: function (xmlDoc) {
+                    console.log("KML 파일 로드 성공");  // KML 파일 로드 성공 시 콘솔 출력
+                    console.log(xmlDoc);  // 로드된 KML 파일의 내용을 출력
+                    map.data.addKml(xmlDoc);  // 지도에 KML 데이터 추가
+                },
+                error: function (xhr, status, error) {
+                    console.error("KML 파일을 불러오는 중 오류 발생: " + error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
