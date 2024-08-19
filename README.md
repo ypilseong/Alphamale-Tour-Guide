@@ -49,7 +49,7 @@ To install and set up the Alphamale Tour Guide, follow these steps:
 After installing the necessary packages, you can start the chatbot by running:
 
 ```bash
-python3 inference.py
+python3 src/alphamale_tour_guide/gradio/inference.py
 ```
 
 ### Important Notes
