@@ -6,15 +6,15 @@ from langchain.prompts import PromptTemplate
 from langchain.schema import StrOutputParser
 
 class NaverBlogSearchAndExtractor:
-    def __init__(self, naver_client_id, naver_client_secret, openai_api_key):
+    def __init__(self, naver_client_id, naver_client_secret, upstage_api_key):
         self.naver_client_id = naver_client_id
         self.naver_client_secret = naver_client_secret
-        self.openai_api_key = openai_api_key
+        self.api_key = upstage_api_key
         self.setup_llm()
 
    # setup_llm 메서드 내에서
     def setup_llm(self):
-        os.environ["OPENAI_API_KEY"] = self.openai_api_key
+        os.environ["OPENAI_API_KEY"] = self.api_key
         os.environ["OPENAI_API_BASE"] = "https://api.upstage.ai/v1/solar"
         self.llm = ChatOpenAI(model_name="solar-1-mini-chat", temperature=0.1)
 
@@ -101,13 +101,13 @@ if __name__ == '__main__':
     # 환경 변수 가져오기
     naver_client_id = os.getenv('NAVER_CLIENT_ID')
     naver_client_secret = os.getenv('NAVER_CLIENT_SECRET')
-    openai_api_key = os.getenv('UPSTAGE_API_KEY')
+    upstage_api_key = os.getenv('UPSTAGE_API_KEY')
 
     # 환경 변수들이 모두 제대로 설정되어 있는지 확인
-    if not naver_client_id or not naver_client_secret or not openai_api_key:
+    if not naver_client_id or not naver_client_secret or not upstage_api_key:
         print("NAVER Client ID, Secret 또는 OpenAI API Key가 설정되지 않았습니다.")
     else:
-        searcher = NaverBlogSearchAndExtractor(naver_client_id, naver_client_secret, openai_api_key)
+        searcher = NaverBlogSearchAndExtractor(naver_client_id, naver_client_secret, upstage_api_key)
         keyword = '길거리 음식, 바다가 보이는 카페'
         results = searcher.search_and_extract(keyword.split(','))
         print('추출된 장소 이름２: ')

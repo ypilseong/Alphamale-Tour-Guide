@@ -1,4 +1,4 @@
-# alphamale-tour-guide
+# Alphamale Tour Guide
 
 [![pypi-image]][pypi-url]
 [![version-image]][release-url]
@@ -25,22 +25,67 @@
 [contributing guidelines]: https://github.com/ypilseong/Alphamale-Tour-Guide/blob/main/CONTRIBUTING.md
 <!-- Links: -->
 
-tour guide using LLM for hackathon
+## Project Overview
 
-- Documentation: [https://ypilseong.github.io/Alphamale-Tour-Guide][docs-url]
-- GitHub: [https://github.com/ypilseong/Alphamale-Tour-Guide][repo-url]
-- PyPI: [https://pypi.org/project/alphamale-tour-guide][pypi-url]
+**Alphamale Tour Guide** is an AI-powered chatbot designed to help users plan customized trips to Jeju Island. Due to the overwhelming number of advertisements on social media, finding specific and personalized tourist spots in Jeju can be difficult. This project aims to solve that problem by providing tailored recommendations and planning routes for your itinerary. 
 
-tour guide using LLM for hackathon
+The chatbot leverages Upstage's 'solar-1-mini-chat' API to understand user preferences and recommend attractions accordingly. To enhance the reliability of the recommendations, the chatbot also utilizes data from Korea's Naver search portal to cross-check and refine suggestions.
 
-## Changelog
+## Installation
 
-See the [CHANGELOG] for more information.
+To install and set up the Alphamale Tour Guide, follow these steps:
 
-## Contributing
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/ypilseong/Alphamale-Tour-Guide.git
+    ```
+2. Install the required dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+After installing the necessary packages, you can start the chatbot by running:
+
+```bash
+python3 inference.py
+```
+
+### Important Notes
+
+- **Naver API Credentials:** The project requires Naver API keys for accessing the search portal. You can obtain these keys from [Naver Developers](https://developers.naver.com/products/service-api/datalab/datalab.md) for `naver_client_id` and `naver_client_secret`.
+
+- **NCP Client ID:** For route optimization and map features, you'll need an NCP client ID from [Naver Cloud Platform](https://www.ncloud.com/?language=ko-KR).
+
+- The credentials should be added to the following files:
+    - `gradio/inference.py`:
+    ```python
+    upstage_api_key = os.getenv("UPSTAGE_API_KEY")
+    naver_client_id = os.getenv("NAVER_CLIENT_ID")
+    naver_client_secret = os.getenv("NAVER_CLIENT_SECRET")
+    ```
+    - `route_opt/index.html`:
+    ```html
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId={key}"></script>
+    ```
+
+### Upstage API Integration
+
+The Upstage 'solar-1-mini-chat' API is utilized within the project to handle natural language processing tasks. This API allows the chatbot to comprehend user queries and provide accurate and personalized recommendations based on individual preferences.
+
+### Documentation
+
+Full documentation is available at: [https://ypilseong.github.io/Alphamale-Tour-Guide][docs-url]
+
+### Changelog
+
+See the [CHANGELOG] for detailed updates.
+
+### Contributing
 
 Contributions are welcome! Please see the [contributing guidelines] for more information.
 
-## License
+### License
 
 This project is released under the [MIT License][license-url].
